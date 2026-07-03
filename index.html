@@ -15,14 +15,21 @@
   *{box-sizing:border-box}
   body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
   .wrap{max-width:1040px;margin:0 auto;padding:30px 20px 70px}
-  header.top{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px;margin-bottom:22px}
+  header.top{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px;margin-bottom:18px}
   h1{font-size:24px;font-weight:600;margin:0 0 5px}
   .sub{color:var(--ink-2);font-size:14px;margin:0}
   .meta{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
   .pill{font-size:12px;color:var(--ink-2);background:var(--panel-2);border:1px solid var(--line);border-radius:999px;padding:4px 11px;white-space:nowrap}
   .tglbtn{cursor:pointer;font-size:12px;color:var(--ink-2);background:var(--panel);border:1px solid var(--line-2);border-radius:999px;padding:5px 12px}
   .tglbtn:hover{background:var(--panel-2)}
-  .sect{font-size:12px;letter-spacing:.05em;color:var(--ink-3);text-transform:uppercase;margin:30px 0 13px;font-weight:600;display:flex;align-items:center;gap:8px}
+  .tabs{display:flex;gap:4px;margin:4px 0 8px;border-bottom:1px solid var(--line)}
+  .tabbtn{cursor:pointer;font-size:14.5px;font-weight:600;color:var(--ink-3);background:none;border:none;border-bottom:2px solid transparent;padding:10px 18px;margin-bottom:-1px;display:flex;align-items:center;gap:7px}
+  .tabbtn i{font-size:16px}
+  .tabbtn.on{color:var(--accent);border-bottom-color:var(--accent)}
+  .tabbtn:hover{color:var(--ink)}
+  .pane{display:none}
+  .pane.on{display:block}
+  .sect{font-size:12px;letter-spacing:.05em;color:var(--ink-3);text-transform:uppercase;margin:28px 0 13px;font-weight:600;display:flex;align-items:center;gap:8px}
   .sect::after{content:"";flex:1;height:1px;background:var(--line)}
   .sect i{font-size:15px;color:var(--accent);-webkit-text-fill-color:var(--accent)}
   .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(158px,1fr));gap:12px}
@@ -30,7 +37,7 @@
   .kpi .lab{font-size:12px;color:var(--ink-3);margin:0 0 7px;line-height:1.3}
   .kpi .val{font-size:24px;font-weight:600;line-height:1.05;letter-spacing:-.4px}
   .kpi .val small{font-size:14px;font-weight:600;color:var(--ink-2)}
-  .kpi .sub2{font-size:11.5px;color:var(--ink-2);margin:7px 0 0;display:flex;align-items:center;gap:5px}
+  .kpi .sub2{font-size:11.5px;color:var(--ink-2);margin:7px 0 0;display:flex;align-items:center;gap:5px;flex-wrap:wrap}
   .mom{font-weight:600;padding:1px 6px;border-radius:6px;font-size:11px}
   .mom.dn{background:var(--down-soft);color:var(--down-ink)}
   .mom.up{background:var(--up-soft);color:var(--up-ink)}
@@ -45,23 +52,16 @@
   .chart-box{position:relative;width:100%;height:220px}
   table{width:100%;border-collapse:collapse;font-size:13.5px}
   caption{text-align:left;font-size:15px;font-weight:600;padding:2px 0 12px}
-  th,td{padding:9px 12px;text-align:right;border-bottom:1px solid var(--line)}
+  th,td{padding:9px 12px;text-align:right;border-bottom:1px solid var(--line);white-space:nowrap}
   th:first-child,td:first-child{text-align:left}
   thead th{font-size:12px;color:var(--ink-3);font-weight:500;border-bottom:1px solid var(--line-2)}
+  thead th.hl{color:var(--accent-ink)}
+  td.hl{font-weight:600}
   tbody tr:last-child td{border-bottom:none}
   tr.total td{font-weight:600;background:var(--panel-2)}
   .muted td{color:var(--ink-3)}
-  .wtag{color:var(--warn)}
   td.dn{color:var(--down-ink);font-weight:600}
   td.up{color:var(--up-ink);font-weight:600}
-  .funnel{margin-top:4px}
-  .fstage{margin:0 0 12px}
-  .fstage .frow{display:flex;justify-content:space-between;align-items:baseline;font-size:13px;margin-bottom:5px}
-  .fstage .fname{color:var(--ink-2)}
-  .fstage .fval{font-weight:600;font-size:16px}
-  .fbar{height:26px;border-radius:7px;display:flex;align-items:center;padding-left:11px;color:#fff;font-size:12px;font-weight:600}
-  .fb1{background:var(--accent)}.fb2{background:var(--gray-bar)}
-  .fnote{font-size:12px;color:var(--ink-2);margin-top:2px}
   .rate-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
   .rate{background:var(--panel-2);border-radius:10px;padding:11px 13px}
   .rate .rl{font-size:12px;color:var(--ink-2);margin:0 0 6px}
@@ -79,218 +79,239 @@
   <header class="top">
     <div>
       <h1>2026 年 6 月平台经营数据报告</h1>
-      <p class="sub">MASOBU · GamePark — 平台交易 / 付费 / 佣金 / 订单，含 5 月环比</p>
+      <p class="sub">MASOBU · GamePark — 前半月 / 后半月 / 整月拆分，含 5 月环比</p>
     </div>
     <div class="meta">
       <span class="pill">数据期间 2026-06</span>
-      <span class="pill">对比 2026-05</span>
-      <span class="pill">生成 2026-07-03</span>
+      <span class="pill">前半 6/1–6/16 · 后半 6/16–6/30</span>
       <button class="tglbtn" id="tgl" type="button">深 / 浅色</button>
     </div>
   </header>
 
-  <div class="sect"><i class="ti ti-chart-bar" aria-hidden="true"></i>平台核心指标 · 6 月（GamePark 交易）</div>
-  <div class="kpis">
-    <div class="kpi"><p class="lab">成交用户数</p><div class="val">839</div><p class="sub2"><span class="mom dn">−61.0%</span> 环比 5 月 2,151</p></div>
-    <div class="kpi"><p class="lab">有效订单量</p><div class="val">1,487</div><p class="sub2"><span class="mom dn">−60.9%</span> 5 月 3,801</p></div>
-    <div class="kpi"><p class="lab">有效订单总金额</p><div class="val"><small>¥</small>41,702</div><p class="sub2"><span class="mom dn">−54.3%</span> 5 月 ¥91,319</p></div>
-    <div class="kpi"><p class="lab">有效订单总收入</p><div class="val"><small>¥</small>36,546</div><p class="sub2"><span class="mom dn">−55.5%</span> 5 月 ¥82,176</p></div>
-    <div class="kpi"><p class="lab">平台立即支付佣金</p><div class="val"><small>¥</small>4,382</div><p class="sub2">日均约 ¥146</p></div>
-    <div class="kpi"><p class="lab">MASOBU 成功订单</p><div class="val">991</div><p class="sub2"><span class="mom dn">−46.1%</span> 环比 5 月 1,838</p></div>
+  <div class="tabs">
+    <button class="tabbtn on" data-pane="gp" type="button"><i class="ti ti-device-gamepad-2" aria-hidden="true"></i>GamePark</button>
+    <button class="tabbtn" data-pane="mb" type="button"><i class="ti ti-building-store" aria-hidden="true"></i>MASOBU</button>
   </div>
 
-  <div class="sect"><i class="ti ti-arrows-diff" aria-hidden="true"></i>GamePark 平台交易 · 5 月 / 6 月环比</div>
-  <div class="grid2">
-    <div class="card">
-      <h3>关键交易指标</h3>
-      <p class="h-sub">5 月 vs 6 月</p>
-      <div class="legend"><span><span class="dot" style="background:var(--gray-bar)"></span>5 月</span><span><span class="dot" style="background:var(--accent)"></span>6 月</span></div>
-      <div class="chart-box"><canvas id="cmom"></canvas></div>
+  <!-- ===================== GAMEPARK ===================== -->
+  <div class="pane on" id="pane-gp">
+
+    <div class="sect"><i class="ti ti-chart-bar" aria-hidden="true"></i>GamePark 核心指标 · 6 月整月</div>
+    <div class="kpis">
+      <div class="kpi"><p class="lab">成交用户数</p><div class="val">839</div><p class="sub2"><span class="mom dn">−61.0%</span> 环比 5 月 2,151</p></div>
+      <div class="kpi"><p class="lab">有效订单量</p><div class="val">1,487</div><p class="sub2"><span class="mom dn">−60.9%</span> 5 月 3,801</p></div>
+      <div class="kpi"><p class="lab">有效订单总金额</p><div class="val"><small>¥</small>41,702</div><p class="sub2"><span class="mom dn">−54.3%</span> 5 月 ¥91,319</p></div>
+      <div class="kpi"><p class="lab">有效订单总收入</p><div class="val"><small>¥</small>36,546</div><p class="sub2"><span class="mom dn">−55.5%</span> 5 月 ¥82,176</p></div>
+      <div class="kpi"><p class="lab">立即支付佣金</p><div class="val"><small>¥</small>4,382</div><p class="sub2">日均约 ¥146</p></div>
+      <div class="kpi"><p class="lab">游戏下载量</p><div class="val">4,547</div><p class="sub2"><span class="mom dn">−80.1%</span> 5 月 22,795</p></div>
     </div>
+
+    <div class="sect"><i class="ti ti-arrows-diff" aria-hidden="true"></i>GamePark 平台交易 · 前半月 / 后半月 / 整月</div>
+    <div class="grid2">
+      <div class="card">
+        <h3>前半月 vs 后半月</h3>
+        <p class="h-sub">金额 / 收入按百元计</p>
+        <div class="legend"><span><span class="dot" style="background:var(--accent)"></span>前半月</span><span><span class="dot" style="background:var(--gray-bar)"></span>后半月</span></div>
+        <div class="chart-box"><canvas id="cmom"></canvas></div>
+      </div>
+      <div class="card" style="overflow-x:auto">
+        <table>
+          <caption>关键交易指标（6/16 计入两段）</caption>
+          <thead><tr><th>指标</th><th class="hl">前半月</th><th class="hl">后半月</th><th class="hl">整月</th><th>5 月</th><th>环比</th></tr></thead>
+          <tbody>
+            <tr><td>成交用户数</td><td class="hl">615</td><td class="hl">252</td><td class="hl">839</td><td>2,151</td><td class="dn">−61.0%</td></tr>
+            <tr><td>有效订单量</td><td class="hl">1,124</td><td class="hl">409</td><td class="hl">1,487</td><td>3,801</td><td class="dn">−60.9%</td></tr>
+            <tr><td>有效订单总金额</td><td class="hl">¥29,801</td><td class="hl">¥13,102</td><td class="hl">¥41,702</td><td>¥91,319</td><td class="dn">−54.3%</td></tr>
+            <tr><td>有效订单总收入</td><td class="hl">¥26,784</td><td class="hl">¥10,871</td><td class="hl">¥36,546</td><td>¥82,176</td><td class="dn">−55.5%</td></tr>
+            <tr><td>开发者游戏内订单额</td><td class="hl">¥9,676</td><td class="hl">¥7,095</td><td class="hl">¥16,482</td><td>¥29,294</td><td class="dn">−43.7%</td></tr>
+            <tr><td>平台游戏订单额</td><td class="hl">¥16,213</td><td class="hl">¥4,635</td><td class="hl">¥20,233</td><td>¥52,468</td><td class="dn">−61.4%</td></tr>
+          </tbody>
+        </table>
+        <p class="h-sub" style="margin-top:12px">前半月贡献约 7 成成交（金额 ¥29,801 / 整月 ¥41,702），后半月明显走弱。6/16 当天计入两段，故前半+后半略大于整月。</p>
+      </div>
+    </div>
+
+    <div class="sect"><i class="ti ti-download" aria-hidden="true"></i>GamePark 游戏下载量 · 前半月 / 后半月 / 整月</div>
     <div class="card" style="overflow-x:auto">
       <table>
+        <caption>游戏下载次数（含免费 / 付费、全部设备与会员等级）</caption>
+        <thead><tr><th>指标</th><th class="hl">前半月</th><th class="hl">后半月</th><th class="hl">整月</th><th>5 月</th><th>环比</th></tr></thead>
+        <tbody>
+          <tr class="total"><td>下载量</td><td class="hl">3,695</td><td class="hl">1,043</td><td class="hl">4,547</td><td>22,795</td><td class="dn">−80.1%</td></tr>
+        </tbody>
+      </table>
+      <p class="h-sub" style="margin-top:12px">下载高度集中在前半月（3,695 / 整月 4,547）；整月降幅约 8 成，比交易额（约 5 成）更陡 —— 拉新收缩最快。</p>
+    </div>
+
+    <div class="sect"><i class="ti ti-cash" aria-hidden="true"></i>GamePark 佣金 · 前半月 / 后半月 / 整月</div>
+    <div class="grid2">
+      <div class="card">
+        <h3>各区间立即支付佣金（元）</h3>
+        <p class="h-sub">6/16 计入两段</p>
+        <div class="chart-box" style="height:200px"><canvas id="ccomm"></canvas></div>
+      </div>
+      <div class="card" style="overflow-x:auto">
+        <table>
+          <caption>各游戏佣金 TOP · 6 月整月（含全部交易类型）</caption>
+          <thead><tr><th>游戏</th><th>订单</th><th>玩家消费</th><th>佣金</th></tr></thead>
+          <tbody>
+            <tr><td>欲界圣姬</td><td>151</td><td>¥6,461</td><td>¥2,067.52</td></tr>
+            <tr><td>全明星动漫乐园</td><td>31</td><td>¥3,730</td><td>¥1,193.60</td></tr>
+            <tr><td>魅惑前线</td><td>61</td><td>¥2,296</td><td>¥734.72</td></tr>
+            <tr><td>解禁无双</td><td>36</td><td>¥2,118</td><td>¥677.76</td></tr>
+            <tr><td>淫乱斗罗</td><td>39</td><td>¥1,226</td><td>¥306.50</td></tr>
+            <tr class="muted"><td>其他 5 款</td><td>29</td><td>¥651</td><td>¥173.45</td></tr>
+            <tr class="total"><td>合计</td><td>347</td><td>¥16,482</td><td>¥5,153.55</td></tr>
+          </tbody>
+        </table>
+        <p class="h-sub" style="margin-top:12px">佣金：前半月 ¥2,564 · 后半月 ¥1,897 · 整月 ¥4,382（各游戏表为整月）。</p>
+      </div>
+    </div>
+
+    <div class="sect"><i class="ti ti-devices" aria-hidden="true"></i>GamePark 交易额按设备 · 5 月 / 6 月（整月）</div>
+    <div class="grid2">
+      <div class="card">
+        <h3>各设备有效订单金额（元）</h3>
+        <p class="h-sub">5 月 vs 6 月 · 整月</p>
+        <div class="legend"><span><span class="dot" style="background:var(--gray-bar)"></span>5 月</span><span><span class="dot" style="background:var(--accent)"></span>6 月</span></div>
+        <div class="chart-box"><canvas id="cdev"></canvas></div>
+      </div>
+      <div class="card" style="overflow-x:auto">
+        <table>
+          <caption>各设备有效订单金额 · 5 月 / 6 月（元 · 整月）</caption>
+          <thead><tr><th>设备</th><th>5 月</th><th>6 月</th><th>环比</th><th>6 月占比</th></tr></thead>
+          <tbody>
+            <tr><td>H5（网页手机）</td><td>¥37,167</td><td>¥13,939</td><td class="dn">−62.5%</td><td>33.4%</td></tr>
+            <tr><td>pc 端（网页）</td><td>¥13,796</td><td>¥6,086</td><td class="dn">−55.9%</td><td>14.6%</td></tr>
+            <tr><td>Android APP</td><td>¥11,005</td><td>¥5,203</td><td class="dn">−52.7%</td><td>12.5%</td></tr>
+            <tr><td>PC 客户端</td><td>¥91</td><td>¥33</td><td class="dn">−63.5%</td><td>0.1%</td></tr>
+            <tr class="muted"><td>其他 / 未标记设备</td><td>¥29,260</td><td>¥16,441</td><td class="dn">−43.8%</td><td>39.4%</td></tr>
+            <tr class="total"><td>合计（全部）</td><td>¥91,319</td><td>¥41,702</td><td class="dn">−54.3%</td><td>100%</td></tr>
+          </tbody>
+        </table>
+        <p class="h-sub" style="margin-top:12px">“其他 / 未标记设备”约等于开发者游戏内订单额（¥16,482）—— 后台不记录该类下单设备。可识别渠道中 <b>H5 占比最高</b>。设备维度后台仅支持整月，未拆半月。</p>
+      </div>
+    </div>
+
+    <div class="sect"><i class="ti ti-users" aria-hidden="true"></i>GamePark 付费分析 · 5 月 / 6 月（整月）</div>
+    <div class="card" style="overflow-x:auto">
+      <table>
+        <caption>首日 / 新增 / 活跃付费（5 月 vs 6 月 · 整月）</caption>
         <thead><tr><th>指标</th><th>5 月</th><th>6 月</th><th>环比</th></tr></thead>
         <tbody>
-          <tr><td>成交用户数</td><td>2,151</td><td>839</td><td class="dn">−61.0%</td></tr>
-          <tr><td>有效订单量</td><td>3,801</td><td>1,487</td><td class="dn">−60.9%</td></tr>
-          <tr><td>有效订单总金额</td><td>¥91,319</td><td>¥41,702</td><td class="dn">−54.3%</td></tr>
-          <tr><td>有效订单总收入</td><td>¥82,176</td><td>¥36,546</td><td class="dn">−55.5%</td></tr>
-          <tr><td>开发者游戏内订单额</td><td>¥29,294</td><td>¥16,482</td><td class="dn">−43.7%</td></tr>
-          <tr><td>平台游戏订单额</td><td>¥52,468</td><td>¥20,233</td><td class="dn">−61.4%</td></tr>
+          <tr><td>首日付费人数</td><td>592</td><td>139</td><td class="dn">−76.5%</td></tr>
+          <tr><td>首日付费金额</td><td>¥24,672</td><td>¥6,639</td><td class="dn">−73.1%</td></tr>
+          <tr><td>首日付费率</td><td>5.17%</td><td>10.40%</td><td class="up">+5.23pp</td></tr>
+          <tr><td>首日付费 ARPU</td><td>¥41.68</td><td>¥47.76</td><td class="up">+14.6%</td></tr>
+          <tr><td>新增付费人数</td><td>734</td><td>184</td><td class="dn">−74.9%</td></tr>
+          <tr><td>新增付费金额</td><td>¥34,476</td><td>¥6,522</td><td class="dn">−81.1%</td></tr>
+          <tr><td>活跃付费 ARPU</td><td>¥228.05</td><td>¥213.43</td><td class="dn">−6.4%</td></tr>
+          <tr><td>活跃付费率</td><td>5.38%</td><td>4.27%</td><td class="dn">−1.11pp</td></tr>
         </tbody>
       </table>
+      <p class="h-sub" style="margin-top:12px">量大幅回落，但首日付费率 / ARPU 反而走高 —— 6 月是“量的问题”，转化与客单价未恶化。付费分析后台仅支持整月，未拆半月。</p>
     </div>
+
   </div>
 
-  <div class="sect"><i class="ti ti-devices" aria-hidden="true"></i>GamePark 交易额按设备 · 5 月 / 6 月环比</div>
-  <div class="grid2">
-    <div class="card">
-      <h3>各设备有效订单金额（元）</h3>
-      <p class="h-sub">5 月 vs 6 月</p>
-      <div class="legend"><span><span class="dot" style="background:var(--gray-bar)"></span>5 月</span><span><span class="dot" style="background:var(--accent)"></span>6 月</span></div>
-      <div class="chart-box"><canvas id="cdev"></canvas></div>
+  <!-- ===================== MASOBU ===================== -->
+  <div class="pane" id="pane-mb">
+
+    <div class="sect"><i class="ti ti-gauge" aria-hidden="true"></i>MASOBU 运营概览 · 6 月整月</div>
+    <div class="kpis">
+      <div class="kpi"><p class="lab">注册用户</p><div class="val">37,585</div><p class="sub2"><span class="mom dn">−63.5%</span> 环比 5 月 103,016</p></div>
+      <div class="kpi"><p class="lab">购买成功订单</p><div class="val">991</div><p class="sub2"><span class="mom dn">−46.1%</span> 5 月 1,838</p></div>
+      <div class="kpi"><p class="lab">游戏消费流水</p><div class="val">917,863<small> M币</small></div><p class="sub2">≈ $9,179 · 成功订单合计</p></div>
+      <div class="kpi"><p class="lab">充值成功额</p><div class="val"><small>$</small>6,204</div><p class="sub2"><span class="mom dn">−61.8%</span> 5 月 $16,240</p></div>
+      <div class="kpi"><p class="lab">购买成功率</p><div class="val">69.9%</div><p class="sub2"><span class="mom up">+2.9pp</span> 5 月 67.0%</p></div>
+      <div class="kpi"><p class="lab">充值成功率</p><div class="val">30.6%</div><p class="sub2">1,550 下单 → 475 成功</p></div>
     </div>
-    <div class="card" style="overflow-x:auto">
+    <div class="card" style="margin-top:16px;overflow-x:auto">
       <table>
-        <caption>各设备有效订单金额 · 5 月 / 6 月（元）</caption>
-        <thead><tr><th>设备</th><th>5 月</th><th>6 月</th><th>环比</th><th>6 月占比</th></tr></thead>
+        <caption>付费 &amp; 消费概览（6 月整月 · 订单口径）</caption>
+        <thead><tr><th>指标</th><th>数值</th><th>口径 / 说明</th></tr></thead>
         <tbody>
-          <tr><td>H5（网页手机）</td><td>¥37,167</td><td>¥13,939</td><td class="dn">−62.5%</td><td>33.4%</td></tr>
-          <tr><td>pc 端（网页）</td><td>¥13,796</td><td>¥6,086</td><td class="dn">−55.9%</td><td>14.6%</td></tr>
-          <tr><td>Android APP</td><td>¥11,005</td><td>¥5,203</td><td class="dn">−52.7%</td><td>12.5%</td></tr>
-          <tr><td>PC 客户端</td><td>¥91</td><td>¥33</td><td class="dn">−63.5%</td><td>0.1%</td></tr>
-          <tr class="muted"><td>其他 / 未标记设备</td><td>¥29,260</td><td>¥16,441</td><td class="dn">−43.8%</td><td>39.4%</td></tr>
-          <tr class="total"><td>合计（全部）</td><td>¥91,319</td><td>¥41,702</td><td class="dn">−54.3%</td><td>100%</td></tr>
+          <tr><td>游戏消费流水</td><td>917,863 M币（≈ $9,179）</td><td>成功购买订单使用 M 币合计（M币 : 美金 = 100 : 1）</td></tr>
+          <tr><td>消费订单笔均</td><td>926 M币（≈ $9.3）</td><td>消费流水 ÷ 991 成功订单</td></tr>
+          <tr><td>充值成功笔数</td><td>475 笔</td><td>商品充值支付成功；下单 1,550、成功率 30.6%</td></tr>
+          <tr><td>充值笔均</td><td>≈ $13.1</td><td>成功充值额 ÷ 成功笔数</td></tr>
+          <tr class="muted"><td>付费用户数 / 付费率 / ARPPU</td><td>暂缺</td><td>后台无现成去重口径，需导出充值 / 购买明细去重后计算</td></tr>
         </tbody>
       </table>
-      <p class="h-sub" style="margin-top:12px">“其他 / 未标记设备”约等于开发者游戏内订单额（6 月 ¥16,482）—— 这类游戏内下单后台不记录设备。可识别渠道中 <b>H5 占比最高</b>；各设备均同步下滑，H5 降幅（−62.5%）最深。</p>
+      <p class="h-sub" style="margin-top:12px">6 月消费流水（≈$9,179）高于当月充值（$6,204），玩家在动用旧 M 币余额；充值端“下单多、成功少”（30.6%）是现金流水的关键抓手。消费流水 / 各游戏 / 付费概览为整月口径。</p>
     </div>
-  </div>
 
-  <div class="sect"><i class="ti ti-users" aria-hidden="true"></i>GamePark 付费分析 · 环比</div>
-  <div class="card" style="overflow-x:auto">
-    <table>
-      <caption>首日 / 新增 / 活跃付费（5 月 vs 6 月）</caption>
-      <thead><tr><th>指标</th><th>5 月</th><th>6 月</th><th>环比</th></tr></thead>
-      <tbody>
-        <tr><td>首日付费人数</td><td>592</td><td>139</td><td class="dn">−76.5%</td></tr>
-        <tr><td>首日付费金额</td><td>¥24,672</td><td>¥6,639</td><td class="dn">−73.1%</td></tr>
-        <tr><td>首日付费率</td><td>5.17%</td><td>10.40%</td><td class="up">+5.23pp</td></tr>
-        <tr><td>首日付费 ARPU</td><td>¥41.68</td><td>¥47.76</td><td class="up">+14.6%</td></tr>
-        <tr><td>新增付费人数</td><td>734</td><td>184</td><td class="dn">−74.9%</td></tr>
-        <tr><td>新增付费金额</td><td>¥34,476</td><td>¥6,522</td><td class="dn">−81.1%</td></tr>
-        <tr><td>活跃付费 ARPU</td><td>¥228.05</td><td>¥213.43</td><td class="dn">−6.4%</td></tr>
-        <tr><td>活跃付费率</td><td>5.38%</td><td>4.27%</td><td class="dn">−1.11pp</td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="sect"><i class="ti ti-download" aria-hidden="true"></i>GamePark 游戏下载量 · 环比</div>
-  <div class="card" style="overflow-x:auto">
-    <table>
-      <caption>游戏下载次数（含免费 / 付费、全部设备与会员等级）</caption>
-      <thead><tr><th>指标</th><th>5 月</th><th>6 月</th><th>环比</th></tr></thead>
-      <tbody>
-        <tr class="total"><td>下载量</td><td>22,795</td><td>4,547</td><td class="dn">−80.1%</td></tr>
-      </tbody>
-    </table>
-    <p class="h-sub" style="margin-top:12px">下载量降幅（约 8 成）明显大于交易额降幅（约 5 成）—— 6 月拉新 / 新增下载收缩得比成交更快，是量端最陡的一条线。</p>
-  </div>
-
-  <div class="sect"><i class="ti ti-cash" aria-hidden="true"></i>GamePark 佣金（6 月）</div>
-  <div class="grid2">
-    <div class="card">
-      <h3>各区间佣金（元）</h3>
-      <p class="h-sub">立即支付佣金 · 6/16 计入两段</p>
-      <div class="chart-box" style="height:200px"><canvas id="ccomm"></canvas></div>
-    </div>
+    <div class="sect"><i class="ti ti-shopping-cart" aria-hidden="true"></i>MASOBU 购买订单 · 前半月 / 后半月 / 整月</div>
     <div class="card" style="overflow-x:auto">
       <table>
-        <caption>各游戏佣金 TOP · 6 月（含全部交易类型）</caption>
-        <thead><tr><th>游戏</th><th>订单</th><th>玩家消费</th><th>佣金</th></tr></thead>
+        <caption>购买订单（不含测试用户 · 6/16 计入两段）</caption>
+        <thead><tr><th>指标</th><th class="hl">前半月</th><th class="hl">后半月</th><th class="hl">整月</th><th>5 月</th><th>环比</th></tr></thead>
         <tbody>
-          <tr><td>欲界圣姬</td><td>151</td><td>¥6,461</td><td>¥2,067.52</td></tr>
-          <tr><td>全明星动漫乐园</td><td>31</td><td>¥3,730</td><td>¥1,193.60</td></tr>
-          <tr><td>魅惑前线</td><td>61</td><td>¥2,296</td><td>¥734.72</td></tr>
-          <tr><td>解禁无双</td><td>36</td><td>¥2,118</td><td>¥677.76</td></tr>
-          <tr><td>淫乱斗罗</td><td>39</td><td>¥1,226</td><td>¥306.50</td></tr>
-          <tr class="muted"><td>其他 5 款</td><td>29</td><td>¥651</td><td>¥173.45</td></tr>
-          <tr class="total"><td>合计</td><td>347</td><td>¥16,482</td><td>¥5,153.55</td></tr>
+          <tr><td>成功订单</td><td class="hl">780</td><td class="hl">243</td><td class="hl">991</td><td>1,838</td><td class="dn">−46.1%</td></tr>
+          <tr><td>全部订单</td><td class="hl">1,112</td><td class="hl">348</td><td class="hl">1,418</td><td>2,743</td><td class="dn">−48.3%</td></tr>
+          <tr><td>成功率</td><td class="hl">70.1%</td><td class="hl">69.8%</td><td class="hl">69.9%</td><td>67.0%</td><td class="up">+2.9pp</td></tr>
         </tbody>
       </table>
+      <p class="h-sub" style="margin-top:12px">前半月成交约为后半月的 3 倍；成功率三段基本持平（约 70%），较 5 月（67%）小幅改善 —— 转化稳、量在掉。</p>
     </div>
-  </div>
 
-  <div class="sect"><i class="ti ti-building-store" aria-hidden="true"></i>MASOBU 运营概览（6 月）</div>
-  <div class="kpis">
-    <div class="kpi"><p class="lab">注册用户</p><div class="val">37,585</div><p class="sub2"><span class="mom dn">−63.5%</span> 环比 5 月 103,016</p></div>
-    <div class="kpi"><p class="lab">购买成功订单</p><div class="val">991</div><p class="sub2"><span class="mom dn">−46.1%</span> 5 月 1,838</p></div>
-    <div class="kpi"><p class="lab">游戏消费流水</p><div class="val">917,863<small> M币</small></div><p class="sub2">≈ $9,179 · 成功订单合计</p></div>
-    <div class="kpi"><p class="lab">充值成功额</p><div class="val"><small>$</small>6,204</div><p class="sub2"><span class="mom dn">−61.8%</span> 5 月 $16,240</p></div>
-    <div class="kpi"><p class="lab">购买成功率</p><div class="val">69.9%</div><p class="sub2"><span class="mom up">+2.9pp</span> 5 月 67.0%</p></div>
-    <div class="kpi"><p class="lab">充值成功率</p><div class="val">30.6%</div><p class="sub2">1,550 下单 → 475 成功</p></div>
-  </div>
-  <div class="card" style="margin-top:16px;overflow-x:auto">
-    <table>
-      <caption>MASOBU 付费 &amp; 消费概览（6 月 · 订单口径）</caption>
-      <thead><tr><th>指标</th><th>数值</th><th>口径 / 说明</th></tr></thead>
-      <tbody>
-        <tr><td>游戏消费流水</td><td>917,863 M币（≈ $9,179）</td><td>6 月成功购买订单使用 M 币合计（M币 : 美金 = 100 : 1）</td></tr>
-        <tr><td>消费订单笔均</td><td>926 M币（≈ $9.3）</td><td>消费流水 ÷ 991 成功订单</td></tr>
-        <tr><td>充值成功笔数</td><td>475 笔</td><td>商品充值支付成功；下单 1,550、成功率 30.6%</td></tr>
-        <tr><td>充值笔均</td><td>≈ $13.1</td><td>成功充值额 ÷ 成功笔数</td></tr>
-        <tr class="muted"><td>付费用户数 / 付费率 / ARPPU</td><td>暂缺</td><td>后台无现成去重口径（会员统计页无数据），需导出充值 / 购买明细去重后计算</td></tr>
-      </tbody>
-    </table>
-    <p class="h-sub" style="margin-top:12px">6 月游戏消费流水（≈$9,179）高于当月充值（$6,204），说明玩家在动用此前充值的 M 币余额；充值端“下单多、成功少”（成功率 30.6%）是拉升现金流水的关键抓手。</p>
-  </div>
-
-  <div class="sect"><i class="ti ti-shopping-cart" aria-hidden="true"></i>MASOBU 购买订单 · 环比</div>
-  <div class="card" style="margin-top:16px;overflow-x:auto">
-    <table>
-      <caption>MASOBU 订单 · 5 月 / 6 月环比（不含测试用户）</caption>
-      <thead><tr><th>指标</th><th>5 月</th><th>6 月</th><th>环比</th></tr></thead>
-      <tbody>
-        <tr><td>成功订单</td><td>1,838</td><td>991</td><td class="dn">−46.1%</td></tr>
-        <tr><td>全部订单</td><td>2,743</td><td>1,418</td><td class="dn">−48.3%</td></tr>
-        <tr><td>成功率</td><td>67.0%</td><td>69.9%</td><td class="up">+2.9pp</td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="sect"><i class="ti ti-list-details" aria-hidden="true"></i>MASOBU 各游戏成功订单（6 月）</div>
-  <div class="card" style="overflow-x:auto">
-    <table>
-      <caption>各游戏成功订单 · 不含测试用户（共 53 款）</caption>
-      <thead><tr><th>游戏</th><th>成功订单</th><th>使用 M 币</th><th>占比</th></tr></thead>
-      <tbody>
-        <tr><td>妖女榨汁</td><td>164</td><td>143,674</td><td>16.5%</td></tr>
-        <tr><td>海王传奇·传奇篇</td><td>98</td><td>103,700</td><td>9.9%</td></tr>
-        <tr><td>解禁无双</td><td>83</td><td>31,647</td><td>8.4%</td></tr>
-        <tr><td>海王传奇·海王篇</td><td>72</td><td>70,000</td><td>7.3%</td></tr>
-        <tr><td>新宝可梦18禁</td><td>59</td><td>30,031</td><td>6.0%</td></tr>
-        <tr><td>魅惑前线</td><td>39</td><td>10,300</td><td>3.9%</td></tr>
-        <tr><td>艳福同居</td><td>38</td><td>37,924</td><td>3.8%</td></tr>
-        <tr><td>破晓之约</td><td>35</td><td>80,900</td><td>3.5%</td></tr>
-        <tr><td>这个面试有点硬·东洋番</td><td>35</td><td>69,965</td><td>3.5%</td></tr>
-        <tr><td>涩点点·人妻NTR</td><td>33</td><td>1,105</td><td>3.3%</td></tr>
-        <tr class="muted"><td>其他 43 款</td><td>335</td><td>338,617</td><td>33.8%</td></tr>
-        <tr class="total"><td>合计</td><td>991</td><td>917,863</td><td>100%</td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="sect"><i class="ti ti-wallet" aria-hidden="true"></i>MASOBU 充值 &amp; 注册用户 · 环比</div>
-  <div class="grid2">
+    <div class="sect"><i class="ti ti-wallet" aria-hidden="true"></i>MASOBU 充值金额 · 前半月 / 后半月 / 整月</div>
     <div class="card" style="overflow-x:auto">
       <table>
-        <caption>充值金额 · 5 月 / 6 月（美金 USD）</caption>
-        <thead><tr><th>类型</th><th>5 月</th><th>6 月</th><th>环比</th></tr></thead>
+        <caption>充值金额（美金 USD · 6/16 计入两段）</caption>
+        <thead><tr><th>类型</th><th class="hl">前半月</th><th class="hl">后半月</th><th class="hl">整月</th><th>5 月</th><th>环比</th></tr></thead>
         <tbody>
-          <tr class="total"><td>总充值金额</td><td>$16,240</td><td>$6,204</td><td class="dn">−61.8%</td></tr>
-          <tr><td>普通充值</td><td>$7,915</td><td>$3,665</td><td class="dn">−53.7%</td></tr>
-          <tr><td>直接购买游戏</td><td>$5,120</td><td>$1,768</td><td class="dn">−65.5%</td></tr>
-          <tr><td>SDK 直购</td><td>$2,264</td><td>$545</td><td class="dn">−75.9%</td></tr>
-          <tr><td>VIP 充值</td><td>$942</td><td>$226</td><td class="dn">−76.0%</td></tr>
+          <tr class="total"><td>总充值金额</td><td class="hl">$5,783</td><td class="hl">$748</td><td class="hl">$6,204</td><td>$16,240</td><td class="dn">−61.8%</td></tr>
+          <tr><td>普通充值</td><td class="hl">$3,440</td><td class="hl">$475</td><td class="hl">$3,665</td><td>$7,915</td><td class="dn">−53.7%</td></tr>
+          <tr><td>直接购买游戏</td><td class="hl">$1,612</td><td class="hl">$203</td><td class="hl">$1,768</td><td>$5,120</td><td class="dn">−65.5%</td></tr>
+          <tr><td>SDK 直购</td><td class="hl">$505</td><td class="hl">$42</td><td class="hl">$545</td><td>$2,264</td><td class="dn">−75.9%</td></tr>
+          <tr><td>VIP 充值</td><td class="hl">$226</td><td class="hl">$28</td><td class="hl">$226</td><td>$942</td><td class="dn">−76.0%</td></tr>
+        </tbody>
+      </table>
+      <p class="h-sub" style="margin-top:12px">充值高度集中在前半月（$5,783 / 整月 $6,204），后半月仅 $748 —— 断崖式回落。此为“每日充值统计”口径（普通 / 直购 / SDK / VIP），不含 M 币商品充值主体。</p>
+    </div>
+
+    <div class="sect"><i class="ti ti-list-details" aria-hidden="true"></i>MASOBU 各游戏成功订单 · 6 月整月</div>
+    <div class="card" style="overflow-x:auto">
+      <table>
+        <caption>各游戏成功订单 · 不含测试用户（共 53 款）</caption>
+        <thead><tr><th>游戏</th><th>成功订单</th><th>使用 M 币</th><th>占比</th></tr></thead>
+        <tbody>
+          <tr><td>妖女榨汁</td><td>164</td><td>143,674</td><td>16.5%</td></tr>
+          <tr><td>海王传奇·传奇篇</td><td>98</td><td>103,700</td><td>9.9%</td></tr>
+          <tr><td>解禁无双</td><td>83</td><td>31,647</td><td>8.4%</td></tr>
+          <tr><td>海王传奇·海王篇</td><td>72</td><td>70,000</td><td>7.3%</td></tr>
+          <tr><td>新宝可梦18禁</td><td>59</td><td>30,031</td><td>6.0%</td></tr>
+          <tr><td>魅惑前线</td><td>39</td><td>10,300</td><td>3.9%</td></tr>
+          <tr><td>艳福同居</td><td>38</td><td>37,924</td><td>3.8%</td></tr>
+          <tr><td>破晓之约</td><td>35</td><td>80,900</td><td>3.5%</td></tr>
+          <tr><td>这个面试有点硬·东洋番</td><td>35</td><td>69,965</td><td>3.5%</td></tr>
+          <tr><td>涩点点·人妻NTR</td><td>33</td><td>1,105</td><td>3.3%</td></tr>
+          <tr class="muted"><td>其他 43 款</td><td>335</td><td>338,617</td><td>33.8%</td></tr>
+          <tr class="total"><td>合计</td><td>991</td><td>917,863</td><td>100%</td></tr>
         </tbody>
       </table>
     </div>
+
+    <div class="sect"><i class="ti ti-user-plus" aria-hidden="true"></i>MASOBU 新增注册用户 · 5 月 / 6 月（整月）</div>
     <div class="card" style="overflow-x:auto">
       <table>
-        <caption>新增注册用户</caption>
+        <caption>新增注册用户（含全部用户类型）</caption>
         <thead><tr><th>指标</th><th>5 月</th><th>6 月</th><th>环比</th></tr></thead>
         <tbody>
           <tr class="total"><td>注册用户数</td><td>103,016</td><td>37,585</td><td class="dn">−63.5%</td></tr>
         </tbody>
       </table>
-      <p class="h-sub" style="margin-top:12px">按注册时间统计，含全部用户类型。5 月约 10.3 万、6 月约 3.76 万，回落约 6 成 —— 与交易 / 充值的降幅方向一致。</p>
+      <p class="h-sub" style="margin-top:12px">5 月约 10.3 万、6 月约 3.76 万，回落约 6 成 —— 与交易 / 充值方向一致。注册后台按注册时间为整月口径，未拆半月。</p>
     </div>
+
   </div>
 
+  <!-- ===================== 共用说明 ===================== -->
   <div class="sect"><i class="ti ti-info-circle" aria-hidden="true"></i>数据说明</div>
   <div class="note">
     <i class="ti ti-clock" aria-hidden="true"></i>
-    <div>已含 5 月 / 6 月环比：GamePark 交易 / 付费 / 设备构成 / 下载量、MASOBU 运营概览 / 订单 / 充值（含笔数与成功率）/ 消费流水 / 注册用户。设备维度取自“交易统计”按设备筛选、下载量取自“游戏下载统计”、充值转化取自“充值订单”按支付状态筛选、消费流水为“购买订单”成功单使用 M 币合计（M币 : 美金 = 100 : 1；MASOBU 金额单位为美金 USD）。<b>MASOBU 付费用户去重数 / 付费率 / ARPPU 暂缺</b>：后台“会员统计”页无数据、无现成去重口径，需用“充值订单 / 购买订单”的“导出”拉明细去重后计算——如需精确数值可导出 Excel，我据此补算。流量统计（PV/UV）与礼包交易统计尚未纳入，可按需再补。</div>
+    <div><b>已按前半月 / 后半月 / 整月拆分：</b>GamePark 交易（6 项）/ 下载 / 佣金、MASOBU 购买订单 / 充值。<b>仅整月（附 5 月环比）：</b>GamePark 设备 / 付费分析、MASOBU 各游戏 / 消费流水 / 付费概览 / 注册（这些后台无自定义月内区间或需逐单去重，暂未拆）。前半月 = 6/1–6/16、后半月 = 6/16–6/30，<b>6/16 计入两段</b>，故前半 + 后半略大于整月。GamePark 金额为人民币元；MASOBU 金额为美金（USD，100 M币 = 1 美金）。MASOBU 付费用户去重数 / 付费率 / ARPPU 需导出明细去重后计算。</div>
   </div>
 
   <footer>
@@ -302,30 +323,40 @@
 <script>
 (function(){
   var root=document.documentElement, btn=document.getElementById('tgl');
+  // tab switching
+  var tabs=[].slice.call(document.querySelectorAll('.tabbtn')), panes=[].slice.call(document.querySelectorAll('.pane'));
+  tabs.forEach(function(t){t.addEventListener('click',function(){
+    tabs.forEach(function(x){x.classList.remove('on');}); t.classList.add('on');
+    var id='pane-'+t.getAttribute('data-pane');
+    panes.forEach(function(p){p.classList.toggle('on', p.id===id);});
+    if(t.getAttribute('data-pane')==='gp') setTimeout(render,30);
+  });});
+  // theme
   btn.addEventListener('click',function(){var cur=root.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');root.setAttribute('data-theme',cur==='dark'?'light':'dark');setTimeout(render,50);});
   function css(v){return getComputedStyle(root).getPropertyValue(v).trim();}
   var charts=[];
+  function mk(id,cfg){var el=document.getElementById(id); if(el) charts.push(new Chart(el,cfg));}
   function render(){
     charts.forEach(function(c){c.destroy();});charts=[];
     var dark=(root.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'))==='dark';
     var tick='#8a8880',grid=dark?'#2f2f2c':'#e6e4dd',axis=dark?'#3a3a36':'#d8d6cd';
     var accent=css('--accent')||'#2a78d6',gray=css('--gray-bar')||'#b9b7ae';
-    charts.push(new Chart(document.getElementById('cmom'),{type:'bar',
+    mk('cmom',{type:'bar',
       data:{labels:['成交用户','有效订单','订单金额(百)','订单收入(百)'],datasets:[
-        {label:'5月',data:[2151,3801,913,822],backgroundColor:gray,borderRadius:4,maxBarThickness:24},
-        {label:'6月',data:[839,1487,417,365],backgroundColor:accent,borderRadius:4,maxBarThickness:24}]},
+        {label:'前半月',data:[615,1124,298,268],backgroundColor:accent,borderRadius:4,maxBarThickness:24},
+        {label:'后半月',data:[252,409,131,109],backgroundColor:gray,borderRadius:4,maxBarThickness:24}]},
       options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){return c.dataset.label+'：'+c.parsed.y.toLocaleString();}}}},
-        scales:{x:{grid:{display:false},border:{color:axis},ticks:{color:tick,font:{size:11}}},y:{beginAtZero:true,grid:{color:grid},border:{display:false},ticks:{color:tick,font:{size:11}}}}}}));
-    charts.push(new Chart(document.getElementById('cdev'),{type:'bar',
+        scales:{x:{grid:{display:false},border:{color:axis},ticks:{color:tick,font:{size:11}}},y:{beginAtZero:true,grid:{color:grid},border:{display:false},ticks:{color:tick,font:{size:11}}}}}});
+    mk('ccomm',{type:'bar',
+      data:{labels:['前半月','后半月','整月'],datasets:[{data:[2564.28,1896.50,4382.18],backgroundColor:[accent,gray,'#7aa9de'],borderRadius:5,maxBarThickness:52}]},
+      options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){return '¥'+c.parsed.y.toLocaleString(undefined,{minimumFractionDigits:2});}}}},
+        scales:{x:{grid:{display:false},border:{color:axis},ticks:{color:tick,font:{size:12}}},y:{beginAtZero:true,grid:{color:grid},border:{display:false},ticks:{color:tick,font:{size:11},callback:function(v){return '¥'+v.toLocaleString();}}}}}});
+    mk('cdev',{type:'bar',
       data:{labels:['H5','pc端','Android','其他/未标记'],datasets:[
         {label:'5月',data:[37167,13796,11005,29260],backgroundColor:gray,borderRadius:4,maxBarThickness:24},
         {label:'6月',data:[13939,6086,5203,16441],backgroundColor:accent,borderRadius:4,maxBarThickness:24}]},
       options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){return c.dataset.label+'：¥'+c.parsed.y.toLocaleString();}}}},
-        scales:{x:{grid:{display:false},border:{color:axis},ticks:{color:tick,font:{size:11}}},y:{beginAtZero:true,grid:{color:grid},border:{display:false},ticks:{color:tick,font:{size:11},callback:function(v){return '¥'+v.toLocaleString();}}}}}}));
-    charts.push(new Chart(document.getElementById('ccomm'),{type:'bar',
-      data:{labels:['整月','上半月','下半月'],datasets:[{data:[4382.18,2564.28,1896.50],backgroundColor:accent,borderRadius:5,maxBarThickness:50}]},
-      options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){return '¥'+c.parsed.y.toLocaleString(undefined,{minimumFractionDigits:2});}}}},
-        scales:{x:{grid:{display:false},border:{color:axis},ticks:{color:tick,font:{size:12}}},y:{beginAtZero:true,grid:{color:grid},border:{display:false},ticks:{color:tick,font:{size:11},callback:function(v){return '¥'+v.toLocaleString();}}}}}}));
+        scales:{x:{grid:{display:false},border:{color:axis},ticks:{color:tick,font:{size:11}}},y:{beginAtZero:true,grid:{color:grid},border:{display:false},ticks:{color:tick,font:{size:11},callback:function(v){return '¥'+v.toLocaleString();}}}}}});
   }
   render();
 })();
