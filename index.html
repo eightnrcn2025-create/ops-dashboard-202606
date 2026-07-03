@@ -122,6 +122,31 @@
     </div>
   </div>
 
+  <div class="sect"><i class="ti ti-devices" aria-hidden="true"></i>GamePark 交易额按设备 · 5 月 / 6 月环比</div>
+  <div class="grid2">
+    <div class="card">
+      <h3>各设备有效订单金额（元）</h3>
+      <p class="h-sub">5 月 vs 6 月</p>
+      <div class="legend"><span><span class="dot" style="background:var(--gray-bar)"></span>5 月</span><span><span class="dot" style="background:var(--accent)"></span>6 月</span></div>
+      <div class="chart-box"><canvas id="cdev"></canvas></div>
+    </div>
+    <div class="card" style="overflow-x:auto">
+      <table>
+        <caption>各设备有效订单金额 · 5 月 / 6 月（元）</caption>
+        <thead><tr><th>设备</th><th>5 月</th><th>6 月</th><th>环比</th><th>6 月占比</th></tr></thead>
+        <tbody>
+          <tr><td>H5（网页手机）</td><td>¥37,167</td><td>¥13,939</td><td class="dn">−62.5%</td><td>33.4%</td></tr>
+          <tr><td>pc 端（网页）</td><td>¥13,796</td><td>¥6,086</td><td class="dn">−55.9%</td><td>14.6%</td></tr>
+          <tr><td>Android APP</td><td>¥11,005</td><td>¥5,203</td><td class="dn">−52.7%</td><td>12.5%</td></tr>
+          <tr><td>PC 客户端</td><td>¥91</td><td>¥33</td><td class="dn">−63.5%</td><td>0.1%</td></tr>
+          <tr class="muted"><td>其他 / 未标记设备</td><td>¥29,260</td><td>¥16,441</td><td class="dn">−43.8%</td><td>39.4%</td></tr>
+          <tr class="total"><td>合计（全部）</td><td>¥91,319</td><td>¥41,702</td><td class="dn">−54.3%</td><td>100%</td></tr>
+        </tbody>
+      </table>
+      <p class="h-sub" style="margin-top:12px">“其他 / 未标记设备”约等于开发者游戏内订单额（6 月 ¥16,482）—— 这类游戏内下单后台不记录设备。可识别渠道中 <b>H5 占比最高</b>；各设备均同步下滑，H5 降幅（−62.5%）最深。</p>
+    </div>
+  </div>
+
   <div class="sect"><i class="ti ti-users" aria-hidden="true"></i>GamePark 付费分析 · 环比</div>
   <div class="card" style="overflow-x:auto">
     <table>
@@ -138,6 +163,18 @@
         <tr><td>活跃付费率</td><td>5.38%</td><td>4.27%</td><td class="dn">−1.11pp</td></tr>
       </tbody>
     </table>
+  </div>
+
+  <div class="sect"><i class="ti ti-download" aria-hidden="true"></i>GamePark 游戏下载量 · 环比</div>
+  <div class="card" style="overflow-x:auto">
+    <table>
+      <caption>游戏下载次数（含免费 / 付费、全部设备与会员等级）</caption>
+      <thead><tr><th>指标</th><th>5 月</th><th>6 月</th><th>环比</th></tr></thead>
+      <tbody>
+        <tr class="total"><td>下载量</td><td>22,795</td><td>4,547</td><td class="dn">−80.1%</td></tr>
+      </tbody>
+    </table>
+    <p class="h-sub" style="margin-top:12px">下载量降幅（约 8 成）明显大于交易额降幅（约 5 成）—— 6 月拉新 / 新增下载收缩得比成交更快，是量端最陡的一条线。</p>
   </div>
 
   <div class="sect"><i class="ti ti-cash" aria-hidden="true"></i>GamePark 佣金（6 月）</div>
@@ -253,15 +290,26 @@
     </div>
   </div>
 
+  <div class="sect"><i class="ti ti-credit-card" aria-hidden="true"></i>MASOBU 充值订单转化（6 月）</div>
+  <div class="card">
+    <h3>充值下单 → 支付成功</h3>
+    <p class="h-sub">商品充值（用户充 M 币）· 全渠道</p>
+    <div class="funnel">
+      <div class="fstage"><div class="frow"><span class="fname">充值下单</span><span class="fval">1,550</span></div><div class="fbar fb2" style="width:100%">100%</div></div>
+      <div class="fstage"><div class="frow"><span class="fname">支付成功</span><span class="fval" style="color:var(--good)">475</span></div><div class="fbar fb1" style="width:30.6%">30.6%</div></div>
+      <p class="fnote"><i class="ti ti-arrow-down-right" style="font-size:13px;vertical-align:-1px" aria-hidden="true"></i> 未完成 <b>1,075 单</b>（69.4%）—— 近 7 成充值下单未完成支付，支付环节存在明显流失</p>
+    </div>
+  </div>
+
   <div class="sect"><i class="ti ti-info-circle" aria-hidden="true"></i>数据说明</div>
   <div class="note">
     <i class="ti ti-clock" aria-hidden="true"></i>
-    <div>已含 5 月 / 6 月环比：GamePark 交易 / 付费、MASOBU 订单 / 充值 / 注册用户。流量统计（PV/UV）后台仅有当日卡片与按天趋势、无月度汇总；GamePark 游戏销量 / 下载榜页的日期筛选后台不支持自定义月份、礼包交易统计尚未纳入 —— 这两项可按需再补。</div>
+    <div>已含 5 月 / 6 月环比：GamePark 交易 / 付费 / 设备构成 / 下载量、MASOBU 订单 / 充值（含笔数与成功率）/ 注册用户。设备维度取自“交易统计”按设备筛选、下载量取自“游戏下载统计”、充值转化取自“充值订单”按支付状态筛选。流量统计（PV/UV）后台仅有当日卡片与按天趋势、无月度汇总；礼包交易统计尚未纳入 —— 可按需再补。</div>
   </div>
 
   <footer>
-    数据来源：GamePark（交易统计 / 付费分析 / 佣金支付）、MASOBU（购买订单）· 内部经营参考<br>
-    MASOBU 订单为“成功、不含测试用户”口径；GamePark 佣金含全部交易类型；金额单位人民币元，MASOBU 使用 M 币。
+    数据来源：GamePark（交易统计 / 付费分析 / 佣金支付 / 游戏下载统计）、MASOBU（购买订单 / 充值订单 / 每日充值统计）· 内部经营参考<br>
+    MASOBU 订单为“成功、不含测试用户”口径；充值转化按“商品充值”全部下单 vs 支付成功；GamePark 佣金含全部交易类型；金额单位人民币元，游戏内消费使用 M 币。
   </footer>
 </div>
 
@@ -282,6 +330,12 @@
         {label:'6月',data:[839,1487,417,365],backgroundColor:accent,borderRadius:4,maxBarThickness:24}]},
       options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){return c.dataset.label+'：'+c.parsed.y.toLocaleString();}}}},
         scales:{x:{grid:{display:false},border:{color:axis},ticks:{color:tick,font:{size:11}}},y:{beginAtZero:true,grid:{color:grid},border:{display:false},ticks:{color:tick,font:{size:11}}}}}}));
+    charts.push(new Chart(document.getElementById('cdev'),{type:'bar',
+      data:{labels:['H5','pc端','Android','其他/未标记'],datasets:[
+        {label:'5月',data:[37167,13796,11005,29260],backgroundColor:gray,borderRadius:4,maxBarThickness:24},
+        {label:'6月',data:[13939,6086,5203,16441],backgroundColor:accent,borderRadius:4,maxBarThickness:24}]},
+      options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){return c.dataset.label+'：¥'+c.parsed.y.toLocaleString();}}}},
+        scales:{x:{grid:{display:false},border:{color:axis},ticks:{color:tick,font:{size:11}}},y:{beginAtZero:true,grid:{color:grid},border:{display:false},ticks:{color:tick,font:{size:11},callback:function(v){return '¥'+v.toLocaleString();}}}}}}));
     charts.push(new Chart(document.getElementById('ccomm'),{type:'bar',
       data:{labels:['整月','上半月','下半月'],datasets:[{data:[4382.18,2564.28,1896.50],backgroundColor:accent,borderRadius:5,maxBarThickness:50}]},
       options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){return '¥'+c.parsed.y.toLocaleString(undefined,{minimumFractionDigits:2});}}}},
