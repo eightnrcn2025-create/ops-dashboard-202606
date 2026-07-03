@@ -4,27 +4,17 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
-<title>2026 年 6 月经营数据报告 · MASOBU / GamePark</title>
+<title>2026 年 6 月平台经营数据报告 · MASOBU / GamePark</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3.31.0/dist/tabler-icons.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <style>
-  :root{
-    --bg:#f7f6f3;--panel:#fff;--panel-2:#f2f1ec;--ink:#1a1a19;--ink-2:#5f5e5a;--ink-3:#8a8880;
-    --line:#e6e4dd;--line-2:#d8d6cd;--accent:#2a78d6;--accent-soft:#e8f0fb;--accent-ink:#0c447c;
-    --gray-bar:#b9b7ae;--good:#1d9e75;--good-soft:#e1f5ee;--good-ink:#0f6e56;--warn:#c98500;--warn-soft:#faeeda;
-    --down:#e24b4a;--down-soft:#fcebeb;--down-ink:#a32d2d;--shadow:0 1px 2px rgba(0,0,0,.04);
-  }
-  @media (prefers-color-scheme:dark){:root{
-    --bg:#141413;--panel:#1f1f1e;--panel-2:#26261f;--ink:#f5f4ef;--ink-2:#b6b4a9;--ink-3:#8a8880;
-    --line:#2f2f2c;--line-2:#3a3a36;--accent:#4d94ec;--accent-soft:#16283c;--accent-ink:#85b7eb;
-    --gray-bar:#6f6e68;--good:#3fbf95;--good-soft:#123027;--good-ink:#5dcaa5;--warn:#e0a53a;--warn-soft:#2a2213;
-    --down:#e66767;--down-soft:#2e1616;--down-ink:#f09595;--shadow:0 1px 2px rgba(0,0,0,.3);
-  }}
-  html[data-theme="light"]{--bg:#f7f6f3;--panel:#fff;--panel-2:#f2f1ec;--ink:#1a1a19;--ink-2:#5f5e5a;--ink-3:#8a8880;--line:#e6e4dd;--line-2:#d8d6cd;--accent:#2a78d6;--accent-soft:#e8f0fb;--accent-ink:#0c447c;--gray-bar:#b9b7ae;--good:#1d9e75;--good-soft:#e1f5ee;--good-ink:#0f6e56;--warn:#c98500;--warn-soft:#faeeda;--down:#e24b4a;--down-soft:#fcebeb;--down-ink:#a32d2d;--shadow:0 1px 2px rgba(0,0,0,.04);}
-  html[data-theme="dark"]{--bg:#141413;--panel:#1f1f1e;--panel-2:#26261f;--ink:#f5f4ef;--ink-2:#b6b4a9;--ink-3:#8a8880;--line:#2f2f2c;--line-2:#3a3a36;--accent:#4d94ec;--accent-soft:#16283c;--accent-ink:#85b7eb;--gray-bar:#6f6e68;--good:#3fbf95;--good-soft:#123027;--good-ink:#5dcaa5;--warn:#e0a53a;--warn-soft:#2a2213;--down:#e66767;--down-soft:#2e1616;--down-ink:#f09595;--shadow:0 1px 2px rgba(0,0,0,.3);}
+  :root{--bg:#f7f6f3;--panel:#fff;--panel-2:#f2f1ec;--ink:#1a1a19;--ink-2:#5f5e5a;--ink-3:#8a8880;--line:#e6e4dd;--line-2:#d8d6cd;--accent:#2a78d6;--accent-soft:#e8f0fb;--accent-ink:#0c447c;--gray-bar:#b9b7ae;--good:#1d9e75;--good-soft:#e1f5ee;--good-ink:#0f6e56;--warn:#c98500;--down:#e24b4a;--down-soft:#fcebeb;--down-ink:#a32d2d;--up:#1d9e75;--up-soft:#e1f5ee;--up-ink:#0f6e56;--shadow:0 1px 2px rgba(0,0,0,.04);}
+  @media (prefers-color-scheme:dark){:root{--bg:#141413;--panel:#1f1f1e;--panel-2:#26261f;--ink:#f5f4ef;--ink-2:#b6b4a9;--ink-3:#8a8880;--line:#2f2f2c;--line-2:#3a3a36;--accent:#4d94ec;--accent-soft:#16283c;--accent-ink:#85b7eb;--gray-bar:#6f6e68;--good:#3fbf95;--good-soft:#123027;--good-ink:#5dcaa5;--warn:#e0a53a;--down:#e66767;--down-soft:#2e1616;--down-ink:#f09595;--up:#3fbf95;--up-soft:#123027;--up-ink:#5dcaa5;--shadow:0 1px 2px rgba(0,0,0,.3);}}
+  html[data-theme="light"]{--bg:#f7f6f3;--panel:#fff;--panel-2:#f2f1ec;--ink:#1a1a19;--ink-2:#5f5e5a;--ink-3:#8a8880;--line:#e6e4dd;--line-2:#d8d6cd;--accent:#2a78d6;--accent-soft:#e8f0fb;--accent-ink:#0c447c;--gray-bar:#b9b7ae;--good:#1d9e75;--good-soft:#e1f5ee;--good-ink:#0f6e56;--warn:#c98500;--down:#e24b4a;--down-soft:#fcebeb;--down-ink:#a32d2d;--up:#1d9e75;--up-soft:#e1f5ee;--up-ink:#0f6e56;--shadow:0 1px 2px rgba(0,0,0,.04);}
+  html[data-theme="dark"]{--bg:#141413;--panel:#1f1f1e;--panel-2:#26261f;--ink:#f5f4ef;--ink-2:#b6b4a9;--ink-3:#8a8880;--line:#2f2f2c;--line-2:#3a3a36;--accent:#4d94ec;--accent-soft:#16283c;--accent-ink:#85b7eb;--gray-bar:#6f6e68;--good:#3fbf95;--good-soft:#123027;--good-ink:#5dcaa5;--warn:#e0a53a;--down:#e66767;--down-soft:#2e1616;--down-ink:#f09595;--up:#3fbf95;--up-soft:#123027;--up-ink:#5dcaa5;--shadow:0 1px 2px rgba(0,0,0,.3);}
   *{box-sizing:border-box}
   body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;font-variant-numeric:tabular-nums}
-  .wrap{max-width:1000px;margin:0 auto;padding:30px 20px 70px}
+  .wrap{max-width:1040px;margin:0 auto;padding:30px 20px 70px}
   header.top{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:12px;margin-bottom:22px}
   h1{font-size:24px;font-weight:600;margin:0 0 5px}
   .sub{color:var(--ink-2);font-size:14px;margin:0}
@@ -34,23 +24,16 @@
   .tglbtn:hover{background:var(--panel-2)}
   .sect{font-size:12px;letter-spacing:.05em;color:var(--ink-3);text-transform:uppercase;margin:30px 0 13px;font-weight:600;display:flex;align-items:center;gap:8px}
   .sect::after{content:"";flex:1;height:1px;background:var(--line)}
-  .summary{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--accent);border-radius:0 12px 12px 0;padding:16px 20px;margin-bottom:6px}
-  .summary h2{font-size:15px;font-weight:600;margin:0 0 10px;display:flex;align-items:center;gap:7px}
-  .summary ul{margin:0;padding-left:2px;list-style:none}
-  .summary li{font-size:14px;color:var(--ink);margin:9px 0;padding-left:24px;position:relative;line-height:1.55}
-  .summary li i{position:absolute;left:0;top:2px;font-size:15px;color:var(--accent)}
-  .summary li b{font-weight:600}
-  .up{color:var(--good)}.dn{color:var(--down)}
+  .sect i{font-size:15px;color:var(--accent);-webkit-text-fill-color:var(--accent)}
   .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(158px,1fr));gap:12px}
   .kpi{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:14px 16px;box-shadow:var(--shadow)}
   .kpi .lab{font-size:12px;color:var(--ink-3);margin:0 0 7px;line-height:1.3}
-  .kpi .val{font-size:25px;font-weight:600;line-height:1.05;letter-spacing:-.4px}
+  .kpi .val{font-size:24px;font-weight:600;line-height:1.05;letter-spacing:-.4px}
   .kpi .val small{font-size:14px;font-weight:600;color:var(--ink-2)}
-  .kpi .sub2{font-size:11.5px;color:var(--ink-2);margin:7px 0 0}
-  .tag{display:inline-block;font-size:11px;font-weight:600;padding:1px 7px;border-radius:6px;margin-top:7px}
-  .tag.dn{background:var(--down-soft);color:var(--down-ink)}
-  .tag.up{background:var(--good-soft);color:var(--good-ink)}
-  .tag.fl{background:var(--accent-soft);color:var(--accent-ink)}
+  .kpi .sub2{font-size:11.5px;color:var(--ink-2);margin:7px 0 0;display:flex;align-items:center;gap:5px}
+  .mom{font-weight:600;padding:1px 6px;border-radius:6px;font-size:11px}
+  .mom.dn{background:var(--down-soft);color:var(--down-ink)}
+  .mom.up{background:var(--up-soft);color:var(--up-ink)}
   .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
   @media (max-width:760px){.grid2{grid-template-columns:1fr}}
   .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:16px 18px 18px;box-shadow:var(--shadow)}
@@ -59,22 +42,7 @@
   .legend{display:flex;flex-wrap:wrap;gap:14px;margin:0 0 10px;font-size:12px;color:var(--ink-2)}
   .legend span{display:flex;align-items:center;gap:6px}
   .dot{width:10px;height:10px;border-radius:3px}
-  .chart-box{position:relative;width:100%;height:210px}
-  .funnel{margin-top:4px}
-  .fstage{margin:0 0 12px}
-  .fstage .frow{display:flex;justify-content:space-between;align-items:baseline;font-size:13px;margin-bottom:5px}
-  .fstage .fname{color:var(--ink-2)}
-  .fstage .fval{font-weight:600;font-size:16px}
-  .fbar{height:26px;border-radius:7px;display:flex;align-items:center;padding-left:11px;color:#fff;font-size:12px;font-weight:600}
-  .fb1{background:var(--accent)}
-  .fb2{background:var(--gray-bar)}
-  .fnote{font-size:12px;color:var(--ink-2);margin-top:2px}
-  .rate-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-  .rate{background:var(--panel-2);border-radius:10px;padding:11px 13px}
-  .rate .rl{font-size:12px;color:var(--ink-2);margin:0 0 6px}
-  .rate .rv{font-size:20px;font-weight:600;color:var(--good)}
-  .bar{height:6px;background:var(--line);border-radius:99px;margin-top:8px;overflow:hidden}
-  .bar>i{display:block;height:100%;background:var(--good);border-radius:99px}
+  .chart-box{position:relative;width:100%;height:220px}
   table{width:100%;border-collapse:collapse;font-size:13.5px}
   caption{text-align:left;font-size:15px;font-weight:600;padding:2px 0 12px}
   th,td{padding:9px 12px;text-align:right;border-bottom:1px solid var(--line)}
@@ -84,12 +52,24 @@
   tr.total td{font-weight:600;background:var(--panel-2)}
   .muted td{color:var(--ink-3)}
   .wtag{color:var(--warn)}
-  .concl{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:6px 22px 10px;box-shadow:var(--shadow)}
-  .concl .item{padding:14px 0;border-bottom:1px solid var(--line)}
-  .concl .item:last-child{border-bottom:none}
-  .concl .it-h{font-size:14px;font-weight:600;margin:0 0 4px;display:flex;align-items:center;gap:8px}
-  .concl .it-h i{color:var(--accent)}
-  .concl .it-b{font-size:13.5px;color:var(--ink-2);margin:0;line-height:1.6}
+  td.dn{color:var(--down-ink);font-weight:600}
+  td.up{color:var(--up-ink);font-weight:600}
+  .funnel{margin-top:4px}
+  .fstage{margin:0 0 12px}
+  .fstage .frow{display:flex;justify-content:space-between;align-items:baseline;font-size:13px;margin-bottom:5px}
+  .fstage .fname{color:var(--ink-2)}
+  .fstage .fval{font-weight:600;font-size:16px}
+  .fbar{height:26px;border-radius:7px;display:flex;align-items:center;padding-left:11px;color:#fff;font-size:12px;font-weight:600}
+  .fb1{background:var(--accent)}.fb2{background:var(--gray-bar)}
+  .fnote{font-size:12px;color:var(--ink-2);margin-top:2px}
+  .rate-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+  .rate{background:var(--panel-2);border-radius:10px;padding:11px 13px}
+  .rate .rl{font-size:12px;color:var(--ink-2);margin:0 0 6px}
+  .rate .rv{font-size:20px;font-weight:600;color:var(--good)}
+  .bar{height:6px;background:var(--line);border-radius:99px;margin-top:8px;overflow:hidden}
+  .bar>i{display:block;height:100%;background:var(--good);border-radius:99px}
+  .note{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--warn);border-radius:0 12px 12px 0;padding:12px 18px;font-size:13px;color:var(--ink-2);display:flex;gap:10px;align-items:flex-start}
+  .note i{font-size:17px;color:var(--warn);-webkit-text-fill-color:var(--warn);margin-top:1px}
   footer{margin-top:28px;font-size:12px;color:var(--ink-3);text-align:center;line-height:1.7}
 </style>
 </head>
@@ -98,86 +78,110 @@
 
   <header class="top">
     <div>
-      <h1>2026 年 6 月经营数据报告</h1>
-      <p class="sub">MASOBU 购买订单 · GamePark 佣金支付 — 整月及上 / 下半月对比分析</p>
+      <h1>2026 年 6 月平台经营数据报告</h1>
+      <p class="sub">MASOBU · GamePark — 平台交易 / 付费 / 佣金 / 订单，含 5 月环比</p>
     </div>
     <div class="meta">
       <span class="pill">数据期间 2026-06</span>
+      <span class="pill">对比 2026-05</span>
       <span class="pill">生成 2026-07-03</span>
       <button class="tglbtn" id="tgl" type="button">深 / 浅色</button>
     </div>
   </header>
 
-  <div class="sect">核心指标</div>
+  <div class="sect"><i class="ti ti-chart-bar" aria-hidden="true"></i>平台核心指标 · 6 月（GamePark 交易）</div>
   <div class="kpis">
-    <div class="kpi"><p class="lab">GamePark 佣金 · 整月</p><div class="val"><small>¥</small>4,382.18</div><p class="sub2">日均约 ¥146</p></div>
-    <div class="kpi"><p class="lab">佣金 下半月环比</p><div class="val dn">−26.0%</div><p class="sub2">¥2,564 → ¥1,897</p></div>
-    <div class="kpi"><p class="lab">MASOBU 成功订单 · 整月</p><div class="val">991</div><p class="sub2">日均约 33 单</p></div>
-    <div class="kpi"><p class="lab">订单成功率 · 整月</p><div class="val">69.9%</div><p class="sub2">991 / 1,418</p></div>
-    <div class="kpi"><p class="lab">MASOBU 全部订单 · 整月</p><div class="val">1,418</div><p class="sub2">含全部状态</p></div>
-    <div class="kpi"><p class="lab">未完成订单 · 整月</p><div class="val">427</div><p class="sub2">占比 30.1%</p></div>
-    <div class="kpi"><p class="lab">成功订单 下半月环比</p><div class="val dn">−68.8%</div><p class="sub2">780 → 243</p></div>
-    <div class="kpi"><p class="lab">已剔除测试订单</p><div class="val">28</div><p class="sub2">占整月约 2%</p></div>
+    <div class="kpi"><p class="lab">成交用户数</p><div class="val">839</div><p class="sub2"><span class="mom dn">−61.0%</span> 环比 5 月 2,151</p></div>
+    <div class="kpi"><p class="lab">有效订单量</p><div class="val">1,487</div><p class="sub2"><span class="mom dn">−60.9%</span> 5 月 3,801</p></div>
+    <div class="kpi"><p class="lab">有效订单总金额</p><div class="val"><small>¥</small>41,702</div><p class="sub2"><span class="mom dn">−54.3%</span> 5 月 ¥91,319</p></div>
+    <div class="kpi"><p class="lab">有效订单总收入</p><div class="val"><small>¥</small>36,546</div><p class="sub2"><span class="mom dn">−55.5%</span> 5 月 ¥82,176</p></div>
+    <div class="kpi"><p class="lab">平台立即支付佣金</p><div class="val"><small>¥</small>4,382</div><p class="sub2">日均约 ¥146</p></div>
+    <div class="kpi"><p class="lab">MASOBU 成功订单</p><div class="val">991</div><p class="sub2">成功率 69.9% · 不含测试</p></div>
   </div>
 
-  <div class="sect">GamePark 佣金</div>
+  <div class="sect"><i class="ti ti-arrows-diff" aria-hidden="true"></i>GamePark 平台交易 · 5 月 / 6 月环比</div>
+  <div class="grid2">
+    <div class="card">
+      <h3>关键交易指标</h3>
+      <p class="h-sub">5 月 vs 6 月</p>
+      <div class="legend"><span><span class="dot" style="background:var(--gray-bar)"></span>5 月</span><span><span class="dot" style="background:var(--accent)"></span>6 月</span></div>
+      <div class="chart-box"><canvas id="cmom"></canvas></div>
+    </div>
+    <div class="card" style="overflow-x:auto">
+      <table>
+        <thead><tr><th>指标</th><th>5 月</th><th>6 月</th><th>环比</th></tr></thead>
+        <tbody>
+          <tr><td>成交用户数</td><td>2,151</td><td>839</td><td class="dn">−61.0%</td></tr>
+          <tr><td>有效订单量</td><td>3,801</td><td>1,487</td><td class="dn">−60.9%</td></tr>
+          <tr><td>有效订单总金额</td><td>¥91,319</td><td>¥41,702</td><td class="dn">−54.3%</td></tr>
+          <tr><td>有效订单总收入</td><td>¥82,176</td><td>¥36,546</td><td class="dn">−55.5%</td></tr>
+          <tr><td>开发者游戏内订单额</td><td>¥29,294</td><td>¥16,482</td><td class="dn">−43.7%</td></tr>
+          <tr><td>平台游戏订单额</td><td>¥52,468</td><td>¥20,233</td><td class="dn">−61.4%</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="sect"><i class="ti ti-users" aria-hidden="true"></i>GamePark 付费分析 · 环比</div>
+  <div class="card" style="overflow-x:auto">
+    <table>
+      <caption>首日 / 新增 / 活跃付费（5 月 vs 6 月）</caption>
+      <thead><tr><th>指标</th><th>5 月</th><th>6 月</th><th>环比</th></tr></thead>
+      <tbody>
+        <tr><td>首日付费人数</td><td>592</td><td>139</td><td class="dn">−76.5%</td></tr>
+        <tr><td>首日付费金额</td><td>¥24,672</td><td>¥6,639</td><td class="dn">−73.1%</td></tr>
+        <tr><td>首日付费率</td><td>5.17%</td><td>10.40%</td><td class="up">+5.23pp</td></tr>
+        <tr><td>首日付费 ARPU</td><td>¥41.68</td><td>¥47.76</td><td class="up">+14.6%</td></tr>
+        <tr><td>新增付费人数</td><td>734</td><td>184</td><td class="dn">−74.9%</td></tr>
+        <tr><td>新增付费金额</td><td>¥34,476</td><td>¥6,522</td><td class="dn">−81.1%</td></tr>
+        <tr><td>活跃付费 ARPU</td><td>¥228.05</td><td>¥213.43</td><td class="dn">−6.4%</td></tr>
+        <tr><td>活跃付费率</td><td>5.38%</td><td>4.27%</td><td class="dn">−1.11pp</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="sect"><i class="ti ti-cash" aria-hidden="true"></i>GamePark 佣金（6 月）</div>
   <div class="grid2">
     <div class="card">
       <h3>各区间佣金（元）</h3>
-      <p class="h-sub">立即支付佣金合计</p>
-      <div class="chart-box"><canvas id="cmm"></canvas></div>
+      <p class="h-sub">立即支付佣金 · 6/16 计入两段</p>
+      <div class="chart-box" style="height:200px"><canvas id="ccomm"></canvas></div>
     </div>
-    <div class="card">
-      <h3>上半月 vs 下半月</h3>
-      <p class="h-sub">6/16 计入两段，故略有重叠</p>
-      <div style="display:flex;gap:12px;margin-top:6px">
-        <div style="flex:1;background:var(--panel-2);border-radius:10px;padding:13px 15px">
-          <p style="font-size:12px;color:var(--ink-2);margin:0 0 6px">上半月 6/1–6/16</p>
-          <div style="font-size:22px;font-weight:600">¥2,564.28</div>
-          <p style="font-size:11.5px;color:var(--ink-3);margin:6px 0 0">日均约 ¥160</p>
-        </div>
-        <div style="flex:1;background:var(--panel-2);border-radius:10px;padding:13px 15px">
-          <p style="font-size:12px;color:var(--ink-2);margin:0 0 6px">下半月 6/16–6/30</p>
-          <div style="font-size:22px;font-weight:600">¥1,896.50</div>
-          <p style="font-size:11.5px;color:var(--ink-3);margin:6px 0 0">日均约 ¥126</p>
-        </div>
-      </div>
-      <div style="margin-top:13px;background:var(--down-soft);border-radius:10px;padding:11px 14px;display:flex;align-items:center;gap:10px">
-        <i class="ti ti-trending-down" style="font-size:22px;color:var(--down-ink)" aria-hidden="true"></i>
-        <div><span style="font-size:19px;font-weight:600;color:var(--down-ink)">−26.0%</span>
-        <span style="font-size:12.5px;color:var(--down-ink);margin-left:6px">下半月佣金环比上半月</span></div>
-      </div>
+    <div class="card" style="overflow-x:auto">
+      <table>
+        <caption>各游戏佣金 TOP · 6 月（含全部交易类型）</caption>
+        <thead><tr><th>游戏</th><th>订单</th><th>玩家消费</th><th>佣金</th></tr></thead>
+        <tbody>
+          <tr><td>欲界圣姬</td><td>151</td><td>¥6,461</td><td>¥2,067.52</td></tr>
+          <tr><td>全明星动漫乐园</td><td>31</td><td>¥3,730</td><td>¥1,193.60</td></tr>
+          <tr><td>魅惑前线</td><td>61</td><td>¥2,296</td><td>¥734.72</td></tr>
+          <tr><td>解禁无双</td><td>36</td><td>¥2,118</td><td>¥677.76</td></tr>
+          <tr><td>淫乱斗罗</td><td>39</td><td>¥1,226</td><td>¥306.50</td></tr>
+          <tr class="muted"><td>其他 5 款</td><td>29</td><td>¥651</td><td>¥173.45</td></tr>
+          <tr class="total"><td>合计</td><td>347</td><td>¥16,482</td><td>¥5,153.55</td></tr>
+        </tbody>
+      </table>
     </div>
   </div>
 
-  <div class="sect">MASOBU 购买订单</div>
+  <div class="sect"><i class="ti ti-shopping-cart" aria-hidden="true"></i>MASOBU 购买订单（6 月）</div>
   <div class="grid2">
     <div class="card">
       <h3>成功 vs 全部订单</h3>
-      <p class="h-sub">各区间订单数 · 不含测试用户</p>
-      <div class="legend">
-        <span><span class="dot" style="background:var(--accent)"></span>成功订单</span>
-        <span><span class="dot" style="background:var(--gray-bar)"></span>全部订单</span>
-      </div>
+      <p class="h-sub">各区间 · 不含测试用户</p>
+      <div class="legend"><span><span class="dot" style="background:var(--accent)"></span>成功</span><span><span class="dot" style="background:var(--gray-bar)"></span>全部</span></div>
       <div class="chart-box" style="height:200px"><canvas id="cord"></canvas></div>
     </div>
     <div class="card">
       <h3>整月转化漏斗</h3>
-      <p class="h-sub">下单 → 支付成功 · 不含测试用户</p>
+      <p class="h-sub">下单 → 支付成功 · 不含测试</p>
       <div class="funnel">
-        <div class="fstage">
-          <div class="frow"><span class="fname">全部下单</span><span class="fval">1,418</span></div>
-          <div class="fbar fb2" style="width:100%">100%</div>
-        </div>
-        <div class="fstage">
-          <div class="frow"><span class="fname">支付成功</span><span class="fval" style="color:var(--good)">991</span></div>
-          <div class="fbar fb1" style="width:69.9%">69.9%</div>
-        </div>
-        <p class="fnote"><i class="ti ti-arrow-down-right" style="font-size:13px;vertical-align:-1px" aria-hidden="true"></i> 未完成 <b>427 单</b>（30.1%，含支付中 / 支付超时 / 失败）</p>
+        <div class="fstage"><div class="frow"><span class="fname">全部下单</span><span class="fval">1,418</span></div><div class="fbar fb2" style="width:100%">100%</div></div>
+        <div class="fstage"><div class="frow"><span class="fname">支付成功</span><span class="fval" style="color:var(--good)">991</span></div><div class="fbar fb1" style="width:69.9%">69.9%</div></div>
+        <p class="fnote"><i class="ti ti-arrow-down-right" style="font-size:13px;vertical-align:-1px" aria-hidden="true"></i> 未完成 <b>427 单</b>（30.1%）</p>
       </div>
     </div>
   </div>
-
   <div class="card" style="margin-top:16px">
     <h3>订单成功率</h3>
     <p class="h-sub">成功订单 ÷ 全部订单 · 三段基本持平</p>
@@ -188,58 +192,11 @@
     </div>
   </div>
 
-  <div class="sect">明细数据</div>
-  <div class="card" style="margin-bottom:16px">
+  <div class="sect"><i class="ti ti-list-details" aria-hidden="true"></i>MASOBU 各游戏成功订单（6 月）</div>
+  <div class="card" style="overflow-x:auto">
     <table>
-      <caption>各区间汇总（MASOBU 不含测试用户）</caption>
-      <thead><tr><th>区间</th><th>GamePark 佣金</th><th>成功订单</th><th>全部订单</th><th>成功率</th></tr></thead>
-      <tbody>
-        <tr class="total"><td>6 月整月 (6/1–6/30)</td><td>¥4,382.18</td><td>991</td><td>1,418</td><td>69.9%</td></tr>
-        <tr><td>上半月 (6/1–6/16)</td><td>¥2,564.28</td><td>780</td><td>1,112</td><td>70.1%</td></tr>
-        <tr><td>下半月 (6/16–6/30)</td><td>¥1,896.50</td><td>243</td><td>348</td><td>69.8%</td></tr>
-        <tr class="muted"><td>上 + 下 之和</td><td>¥4,460.78</td><td>1,023</td><td>1,460</td><td>—</td></tr>
-        <tr class="muted"><td class="wtag">其中 6/16 重复计</td><td class="wtag">¥78.60</td><td class="wtag">32</td><td class="wtag">42</td><td class="wtag">—</td></tr>
-      </tbody>
-    </table>
-  </div>
-  <div class="card">
-    <table>
-      <caption>测试用户剔除对照 · MASOBU 整月</caption>
-      <thead><tr><th>口径</th><th>成功订单</th><th>全部订单</th><th>成功率</th></tr></thead>
-      <tbody>
-        <tr><td>含测试用户</td><td>1,018</td><td>1,446</td><td>70.4%</td></tr>
-        <tr class="total"><td>不含测试用户（采用）</td><td>991</td><td>1,418</td><td>69.9%</td></tr>
-        <tr class="muted"><td>差额（测试订单）</td><td>−27</td><td>−28</td><td>—</td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="sect">按游戏明细 · GamePark</div>
-  <div class="card">
-    <table>
-      <caption>各游戏交易与佣金 · 6 月整月（含全部交易类型）</caption>
-      <thead><tr><th>游戏</th><th>订单数</th><th>玩家消费额</th><th>平台佣金</th><th>佣金占比</th></tr></thead>
-      <tbody>
-        <tr><td>欲界圣姬</td><td>151</td><td>¥6,461</td><td>¥2,067.52</td><td>40.1%</td></tr>
-        <tr><td>全明星动漫乐园</td><td>31</td><td>¥3,730</td><td>¥1,193.60</td><td>23.2%</td></tr>
-        <tr><td>魅惑前线</td><td>61</td><td>¥2,296</td><td>¥734.72</td><td>14.3%</td></tr>
-        <tr><td>解禁无双</td><td>36</td><td>¥2,118</td><td>¥677.76</td><td>13.1%</td></tr>
-        <tr><td>淫乱斗罗</td><td>39</td><td>¥1,226</td><td>¥306.50</td><td>5.9%</td></tr>
-        <tr><td>姬霸天下</td><td>14</td><td>¥351</td><td>¥87.75</td><td>1.7%</td></tr>
-        <tr><td>火影娇妻村</td><td>9</td><td>¥230</td><td>¥73.60</td><td>1.4%</td></tr>
-        <tr><td>欲望启示录</td><td>1</td><td>¥21</td><td>¥7.35</td><td>0.1%</td></tr>
-        <tr><td>海王传奇海王篇</td><td>1</td><td>¥8</td><td>¥4.40</td><td>0.1%</td></tr>
-        <tr><td>灼炎的巫女静音（JOI模拟）</td><td>4</td><td>¥41</td><td>¥0.35</td><td>0.0%</td></tr>
-        <tr class="total"><td>合计</td><td>347</td><td>¥16,482</td><td>¥5,153.55</td><td>100%</td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <div class="sect">按游戏明细 · MASOBU</div>
-  <div class="card">
-    <table>
-      <caption>各游戏成功订单 · 6 月整月（不含测试用户，共 53 款）</caption>
-      <thead><tr><th>游戏</th><th>成功订单</th><th>使用 M 币</th><th>订单占比</th></tr></thead>
+      <caption>各游戏成功订单 · 不含测试用户（共 53 款）</caption>
+      <thead><tr><th>游戏</th><th>成功订单</th><th>使用 M 币</th><th>占比</th></tr></thead>
       <tbody>
         <tr><td>妖女榨汁</td><td>164</td><td>143,674</td><td>16.5%</td></tr>
         <tr><td>海王传奇·传奇篇</td><td>98</td><td>103,700</td><td>9.9%</td></tr>
@@ -248,49 +205,54 @@
         <tr><td>新宝可梦18禁</td><td>59</td><td>30,031</td><td>6.0%</td></tr>
         <tr><td>魅惑前线</td><td>39</td><td>10,300</td><td>3.9%</td></tr>
         <tr><td>艳福同居</td><td>38</td><td>37,924</td><td>3.8%</td></tr>
-        <tr><td>这个面试有点硬·东洋番</td><td>35</td><td>69,965</td><td>3.5%</td></tr>
         <tr><td>破晓之约</td><td>35</td><td>80,900</td><td>3.5%</td></tr>
+        <tr><td>这个面试有点硬·东洋番</td><td>35</td><td>69,965</td><td>3.5%</td></tr>
         <tr><td>涩点点·人妻NTR</td><td>33</td><td>1,105</td><td>3.3%</td></tr>
-        <tr><td>从灵开始的女子公寓</td><td>32</td><td>60,768</td><td>3.2%</td></tr>
-        <tr><td>渣男养成系统</td><td>27</td><td>51,273</td><td>2.7%</td></tr>
-        <tr><td>完蛋我要成为AV导演了</td><td>26</td><td>49,374</td><td>2.6%</td></tr>
-        <tr><td>极乐宿舍(真人影游)</td><td>26</td><td>49,374</td><td>2.6%</td></tr>
-        <tr><td>欲界圣姬</td><td>23</td><td>8,700</td><td>2.3%</td></tr>
-        <tr class="muted"><td>其他 38 款</td><td>201</td><td>119,128</td><td>20.3%</td></tr>
+        <tr class="muted"><td>其他 43 款</td><td>335</td><td>338,617</td><td>33.8%</td></tr>
         <tr class="total"><td>合计</td><td>991</td><td>917,863</td><td>100%</td></tr>
       </tbody>
     </table>
   </div>
 
+  <div class="sect"><i class="ti ti-info-circle" aria-hidden="true"></i>数据说明</div>
+  <div class="note">
+    <i class="ti ti-clock" aria-hidden="true"></i>
+    <div>MASOBU 自身的 5 月环比、以及流量统计（PV/UV，仅提供当日卡片与按天趋势、无月度汇总）暂未纳入 —— 后台日期筛选存在限制，正在补充。GamePark 平台交易与付费的 5 月/6 月环比已完整。</div>
+  </div>
+
   <footer>
-    数据来源：MASOBU 购买订单后台、GamePark 佣金支付记录后台 · 内部经营参考<br>
-    MASOBU 为订单数量口径（不含测试用户），GamePark 为立即支付佣金（元）；6/16 同时计入上 / 下半月。
+    数据来源：GamePark（交易统计 / 付费分析 / 佣金支付）、MASOBU（购买订单）· 内部经营参考<br>
+    MASOBU 订单为“成功、不含测试用户”口径；GamePark 佣金含全部交易类型；金额单位人民币元，MASOBU 使用 M 币。
   </footer>
 </div>
 
 <script>
 (function(){
   var root=document.documentElement, btn=document.getElementById('tgl');
-  btn.addEventListener('click',function(){
-    var cur=root.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
-    root.setAttribute('data-theme', cur==='dark'?'light':'dark'); setTimeout(render,50);
-  });
-  function css(v){ return getComputedStyle(root).getPropertyValue(v).trim(); }
+  btn.addEventListener('click',function(){var cur=root.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');root.setAttribute('data-theme',cur==='dark'?'light':'dark');setTimeout(render,50);});
+  function css(v){return getComputedStyle(root).getPropertyValue(v).trim();}
   var charts=[];
   function render(){
-    charts.forEach(function(c){c.destroy();}); charts=[];
+    charts.forEach(function(c){c.destroy();});charts=[];
     var dark=(root.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'))==='dark';
-    var tick='#8a8880', grid=dark?'#2f2f2c':'#e6e4dd', axis=dark?'#3a3a36':'#d8d6cd';
-    var accent=css('--accent')||'#2a78d6', gray=css('--gray-bar')||'#b9b7ae';
-    var L=['整月','上半月','下半月'];
-    charts.push(new Chart(document.getElementById('cmm'),{type:'bar',
-      data:{labels:L,datasets:[{data:[4382.18,2564.28,1896.50],backgroundColor:accent,borderRadius:5,maxBarThickness:52}]},
+    var tick='#8a8880',grid=dark?'#2f2f2c':'#e6e4dd',axis=dark?'#3a3a36':'#d8d6cd';
+    var accent=css('--accent')||'#2a78d6',gray=css('--gray-bar')||'#b9b7ae';
+    charts.push(new Chart(document.getElementById('cmom'),{type:'bar',
+      data:{labels:['成交用户','有效订单','订单金额(百)','订单收入(百)'],datasets:[
+        {label:'5月',data:[2151,3801,913,822],backgroundColor:gray,borderRadius:4,maxBarThickness:24},
+        {label:'6月',data:[839,1487,417,365],backgroundColor:accent,borderRadius:4,maxBarThickness:24}]},
+      options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){return c.dataset.label+'：'+c.parsed.y.toLocaleString();}}}},
+        scales:{x:{grid:{display:false},border:{color:axis},ticks:{color:tick,font:{size:11}}},y:{beginAtZero:true,grid:{color:grid},border:{display:false},ticks:{color:tick,font:{size:11}}}}}}));
+    charts.push(new Chart(document.getElementById('ccomm'),{type:'bar',
+      data:{labels:['整月','上半月','下半月'],datasets:[{data:[4382.18,2564.28,1896.50],backgroundColor:accent,borderRadius:5,maxBarThickness:50}]},
       options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){return '¥'+c.parsed.y.toLocaleString(undefined,{minimumFractionDigits:2});}}}},
         scales:{x:{grid:{display:false},border:{color:axis},ticks:{color:tick,font:{size:12}}},y:{beginAtZero:true,grid:{color:grid},border:{display:false},ticks:{color:tick,font:{size:11},callback:function(v){return '¥'+v.toLocaleString();}}}}}}));
     charts.push(new Chart(document.getElementById('cord'),{type:'bar',
-      data:{labels:L,datasets:[{label:'成功',data:[991,780,243],backgroundColor:accent,borderRadius:4,maxBarThickness:30},{label:'全部',data:[1418,1112,348],backgroundColor:gray,borderRadius:4,maxBarThickness:30}]},
+      data:{labels:['整月','上半月','下半月'],datasets:[
+        {label:'成功',data:[991,780,243],backgroundColor:accent,borderRadius:4,maxBarThickness:30},
+        {label:'全部',data:[1418,1112,348],backgroundColor:gray,borderRadius:4,maxBarThickness:30}]},
       options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){return c.dataset.label+'：'+c.parsed.y.toLocaleString()+' 单';}}}},
-        scales:{x:{grid:{display:false},border:{color:axis},ticks:{color:tick,font:{size:12}}},y:{beginAtZero:true,grid:{color:grid},border:{display:false},ticks:{color:tick,font:{size:11},callback:function(v){return v.toLocaleString();}}}}}}));
+        scales:{x:{grid:{display:false},border:{color:axis},ticks:{color:tick,font:{size:12}}},y:{beginAtZero:true,grid:{color:grid},border:{display:false},ticks:{color:tick,font:{size:11}}}}}}));
   }
   render();
 })();
